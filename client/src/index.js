@@ -7,6 +7,13 @@ import reduxThunk from 'redux-thunk';
 import routes from './routes';  
 import reducers from './reducers/index';  
 import { AUTH_USER } from './actions/types';
+import cookie from 'react-cookie';  
+
+const token = cookie.load('token');
+
+if (token) {  
+  store.dispatch({ type: AUTH_USER });
+}
 
 // Import stylesheets like this, if you choose: import './public/stylesheets/base.scss';
 

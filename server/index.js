@@ -5,6 +5,8 @@ const express = require('express'),
       config = require('./config/main');
       mongoose = require('mongoose');
 
+const router = require('./router');
+
 mongoose.connect(config.database);
 
 app.use(bodyParser.urlencoded({ extended: false }));  
@@ -24,3 +26,5 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Credentials", "true");
   next();
 });
+
+router(app);
